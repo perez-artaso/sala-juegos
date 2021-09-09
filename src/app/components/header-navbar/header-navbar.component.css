@@ -1,0 +1,8 @@
+#arcade-logo {
+  width: 2.60vw;
+  height: 2.60vw;
+}
+
+li > a {
+  cursor: pointer;
+}

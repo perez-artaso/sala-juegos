@@ -1,0 +1,59 @@
+<div class="form-signin text-center">
+    <form [formGroup]="loginForm" (ngSubmit)="loginFormSubmition()">
+
+        <img class="mb-4" src="/assets/images/player.png">
+
+        <div class="form-floating mb-2">
+            <input 
+                formControlName="email" 
+                type="email" 
+                class="form-control" 
+                id="floatingInput" 
+                placeholder="name@example.com"
+                [ngClass]="{'is-invalid': isInputValid('email') }"
+            >
+            <label for="floatingInput">Email address</label>
+        </div>
+
+        <div class="form-floating mb-2">
+            <input 
+                formControlName="password" 
+                type="password" 
+                class="form-control" 
+                id="floatingPassword" 
+                placeholder="Password"
+                [ngClass]="{'is-invalid': isInputValid('password')}"
+            >
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!loginForm.valid">Ingresar</button>
+        
+    </form>
+</div>
+
+<div
+    *ngIf="loginFormMessages.length != 0 && ((!loginForm.valid && (loginForm.touched || loginForm.dirty)) || wrongCredentials); else autoFills;"
+    class="form-signin"
+    [ngClass]="{ 
+        'alert-danger': !loginForm?.valid || wrongCredentials, 
+        'alert-success': loginForm?.valid 
+    }"
+>
+    <div 
+        *ngFor="let message of loginFormMessages"
+        class="mb-2"
+    >
+        <span>
+            {{message}}
+        </span>
+    </div>
+</div>
+
+<ng-template #autoFills>
+    <div style="display: flex;" class="form-signin">
+        <button (click)="fillForm(1)" class="btn btn-primary">Astor Piazzolla</button>
+        <button (click)="fillForm(2)" class="btn btn-secondary">El Chelo Delgado</button>
+        <button (click)="fillForm(3)" class="btn btn-danger">Usuario Inexistente</button>
+    </div>
+</ng-template>

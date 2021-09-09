@@ -1,0 +1,50 @@
+<div class="form-signin text-center">
+    <form [formGroup]="signinForm" (ngSubmit)="signinFormSubmition()">
+        <img class="mb-4" src="/assets/images/register.png">
+
+        <div class="form-floating">
+            <input
+                type="email" 
+                class="form-control" 
+                id="floatingInput" 
+                placeholder="name@example.com"
+                formControlName="email"
+                [ngClass]="{'is-invalid': isInputValid('email') }"
+            >
+            <label for="floatingInput">Email address</label>
+        </div>
+
+        <div class="form-floating">
+            <input 
+                type="password" 
+                class="form-control" 
+                id="floatingPassword" 
+                placeholder="Password"
+                formControlName="password"
+                [ngClass]="{'is-invalid': isInputValid('password') }"
+            >
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Registrate</button>
+        
+    </form>
+</div>
+
+<div
+    *ngIf="signinFormMessages.length != 0 && (!signinForm.valid && (signinForm.touched || signinForm.dirty) || submitionError)"
+    class="form-signin"
+    [ngClass]="{ 
+        'alert-danger': !signinForm?.valid || submitionError, 
+        'alert-success': signinForm?.valid 
+    }"
+>
+    <div 
+        *ngFor="let message of signinFormMessages"
+        class="mb-2"
+    >
+        <span>
+            {{message}}
+        </span>
+    </div>
+</div>

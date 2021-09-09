@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "la-sala-eb971": {
+      "hosting": {
+        "sala-juegos": [
+          "la-sala-eb971"
+        ]
+      }
+    }
+  }
+}
