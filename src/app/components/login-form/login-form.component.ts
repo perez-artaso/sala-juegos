@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
+import firebase from 'firebase/compat/app';
+import { AccessLog } from 'src/app/models/access-log';
+
 
 @Component({
   selector: 'login-form',
@@ -10,16 +14,27 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginFormComponent implements OnInit {
 
+  loggedUser: firebase.User | null = null;
   loginForm = new FormGroup({});
   loginFormMessages: string[] = [];
   wrongCredentials = false;
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router, private firestore: FirestoreService) {
     this.buildForm();
   }
 
   ngOnInit(): void {
+    this.observeUser();
     this.onLoginFormChanges();
+  }
+
+  observeUser() {
+    this.auth.loggedUser().subscribe(
+      (user) => {
+        this.loggedUser = user;
+        console.dir(this.loggedUser);
+      }
+    );
   }
 
   buildForm() {
@@ -47,11 +62,31 @@ export class LoginFormComponent implements OnInit {
         this.loginForm.get('password')?.value
       ).then(
         () => {
-          this.router.navigateByUrl('/home');
+          
+          this.auth.loggedUser().subscribe(
+            (user) => {
+
+              this.firestore.saveDocument(
+                'accessLogs', 
+                {
+                  userId: user?.uid, 
+                  timestamp: Math.floor(new Date().getTime()/1000.0).toString()
+                }
+              )
+              .then(
+                () => this.router.navigateByUrl('/home')
+              ).catch(
+                (error) => console.log(error)
+              );
+
+            }
+          )
+
         }
       ).catch(
         (error) => {
           this.wrongCredentials = true;
+          console.dir(error);
           this.loginFormMessages = ["* Credenciales incorrectas"];
         }
       );
