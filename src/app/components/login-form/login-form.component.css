@@ -46,6 +46,14 @@ body {
   border-top-right-radius: 0;
 }
 
+@media (max-width: 480px) {
+  form img {
+    width: 20vw;
+    height: 20vw;
+    margin-top: 2vh;
+  }
+}
+
 form img {
     box-sizing: border-box;
     border-radius: 50px;
