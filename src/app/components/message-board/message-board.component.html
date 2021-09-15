@@ -1,0 +1,16 @@
+<ul id="messageBoard" class="list-group">
+    <li
+      *ngFor="let chatMessage of messages;" 
+      class="list-group-item d-flex justify-content-between align-items-center"
+    >
+      <div class="card message-card">
+          <h5 class="card-header">
+            <strong>{{ chatMessage.userId }}</strong>
+            <span class="message-time">{{ chatMessage.timestamp }}</span>
+          </h5>
+          <div class="card-body">
+              {{ chatMessage.message }}
+          </div>
+      </div>
+    </li>
+</ul>

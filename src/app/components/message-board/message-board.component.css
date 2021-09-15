@@ -1,0 +1,10 @@
+.card-header {
+    display: flex;
+}
+
+.message-time {
+    align-self: center;
+    color: gray;
+    font-size: .7rem;
+    margin-left: 1vw;
+}

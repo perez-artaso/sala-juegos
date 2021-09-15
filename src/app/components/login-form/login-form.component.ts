@@ -66,6 +66,8 @@ export class LoginFormComponent implements OnInit {
           this.auth.loggedUser().subscribe(
             (user) => {
 
+              console.dir(user);
+
               this.firestore.saveDocument(
                 'accessLogs', 
                 {

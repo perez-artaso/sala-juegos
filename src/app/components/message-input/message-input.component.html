@@ -1,0 +1,19 @@
+<div id="message-input-container">
+
+    <input
+        type="text" 
+        name="message-input" 
+        id="message-input"
+        [(ngModel)]="messageInput"
+        (keydown)="keydownPressed($event)"
+    >
+
+    <button 
+        class="btn btn-primary"
+        (click)="sendMessage()"
+        [disabled]="messageInput == ''"
+    >
+        <img src="assets/images/send.png" alt="send-button">
+    </button>
+
+</div>

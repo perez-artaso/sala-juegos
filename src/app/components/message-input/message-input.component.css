@@ -1,0 +1,23 @@
+#message-input-container {
+    height: 8vh;
+    border-radius: 10px;
+    display: flex;
+}
+
+#message-input {
+    border: 1px solid grey;
+    height: 8vh;
+    border-radius: 10px;
+    width: 100%;
+}
+
+button {
+    width: 8%;
+    border-radius: 10px;
+    margin-left: .5%;
+}
+
+button img {
+    max-height: 100%;
+    max-width: 100%;
+}

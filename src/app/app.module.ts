@@ -14,6 +14,10 @@ import { HeaderNavbarComponent } from './components/header-navbar/header-navbar.
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { SigninFormComponent } from './components/signin-form/signin-form.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { ChatRoomComponent } from './pages/chat-room/chat-room.component';
+import { ChatWindowComponent } from './components/chat-window/chat-window.component';
+import { MessageBoardComponent } from './components/message-board/message-board.component';
+import { MessageInputComponent } from './components/message-input/message-input.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     HeaderNavbarComponent,
     LoginFormComponent,
     SigninFormComponent,
-    HomePageComponent
+    HomePageComponent,
+    ChatRoomComponent,
+    ChatWindowComponent,
+    MessageBoardComponent,
+    MessageInputComponent
   ],
   imports: [
     BrowserModule,

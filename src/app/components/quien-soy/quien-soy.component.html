@@ -1,1 +1,34 @@
-<p>Su usuario es: {{loggedUser.multiFactor.user.email}}</p>
+<div class="container">
+    <form [formGroup]="profileForm" (ngSubmit)="profileFormSubmition()">
+
+        <label class="form-label" for="profile-image">Imagen de Perfil</label>
+        <input 
+            type="image"
+            class="form-control"
+            src=""
+            alt="profile-image"
+            id="profile-image"
+            formControlName="photoURL"
+        >
+
+        <label class="form-label" for="profile-email">Email</label>
+        <input 
+            type="text" 
+            class="form-control"
+            alt="profile-email"
+            id="profile-email"
+            formControlName="email"
+            [disabled]="true"
+        >
+
+        <label class="form-label" for="profile-display-name">Nombre</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            alt="profile-display-name" 
+            id="profile-display-name"
+            formControlName="displayName"
+        >
+
+    </form>
+</div>
