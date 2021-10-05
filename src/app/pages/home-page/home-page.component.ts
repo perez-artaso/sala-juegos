@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CardSuit } from 'src/app/models/card-suit';
 
 @Component({
   selector: 'app-home-page',

@@ -34,4 +34,24 @@ export class AuthService {
     return this.afAuth.user;
   }
 
+  updateUser (newValues: any) {
+    this.loggedUser().subscribe(
+
+      (user: firebase.User | null) => {
+
+        user?.updateProfile(newValues).then(
+          () => {
+            return true;
+          } 
+        ).catch(
+          () => {
+            return false;
+          }
+        )
+
+      }
+
+    );
+  }
+
 }

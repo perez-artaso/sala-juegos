@@ -7,6 +7,7 @@
       <ul *ngIf="loggedUser; else navbarTitle;" class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li><a (click)="navigate('home')" class="nav-link px-2 link-secondary">Home</a></li>
         <li><a (click)="navigate('profile')" class="nav-link px-2 link-dark">Mi Perfil</a></li>
+        <li><a (click)="navigate('chat-room')" class="nav-link px-2 link-dark">Chat</a></li>
         <li><a (click)="logout();" class="nav-link px-2 link-dark">Logout</a></li>
       </ul>
       

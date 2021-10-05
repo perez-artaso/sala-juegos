@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -18,6 +19,14 @@ import { ChatRoomComponent } from './pages/chat-room/chat-room.component';
 import { ChatWindowComponent } from './components/chat-window/chat-window.component';
 import { MessageBoardComponent } from './components/message-board/message-board.component';
 import { MessageInputComponent } from './components/message-input/message-input.component';
+import { AhorcadoComponent } from './components/ahorcado/ahorcado.component';
+import { MayorOMenorComponent } from './components/mayor-o-menor/mayor-o-menor.component';
+import { OnscreenKeyboardComponent } from './components/onscreen-keyboard/onscreen-keyboard.component';
+import { KeyComponent } from './components/key/key.component';
+import { CardComponent } from './components/card/card.component';
+import { SuitImgUrlPipe } from './pipes/suit-img-url.pipe';
+import { CardDeckComponent } from './components/card-deck/card-deck.component';
+import { PreguntadosComponent } from './components/preguntados/preguntados.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +39,15 @@ import { MessageInputComponent } from './components/message-input/message-input.
     ChatRoomComponent,
     ChatWindowComponent,
     MessageBoardComponent,
-    MessageInputComponent
+    MessageInputComponent,
+    AhorcadoComponent,
+    MayorOMenorComponent,
+    OnscreenKeyboardComponent,
+    KeyComponent,
+    CardComponent,
+    SuitImgUrlPipe,
+    CardDeckComponent,
+    PreguntadosComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +56,8 @@ import { MessageInputComponent } from './components/message-input/message-input.
     AngularFireAuthModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    HttpClientModule
   ],
   providers: [
     { 

@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import firebase from 'firebase/compat/app';
-import { AccessLog } from 'src/app/models/access-log';
 
 
 @Component({
@@ -26,6 +25,7 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
     this.observeUser();
     this.onLoginFormChanges();
+    this.redirectIfAlreadyLogged();
   }
 
   observeUser() {
@@ -157,6 +157,16 @@ export class LoginFormComponent implements OnInit {
       break;
 
     }
+  }
+
+  redirectIfAlreadyLogged() {
+    this.auth.loggedUser().subscribe(
+      (user) => {
+        if (user) {
+          this.router.navigate(["/home"]);
+        }
+      }
+    );
   }
 
 }

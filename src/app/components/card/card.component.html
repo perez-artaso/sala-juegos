@@ -1,0 +1,18 @@
+<div id="card-container">
+    <ng-template [ngIf]="!backTurned" [ngIfElse]="cardsBack">
+        <div id="top-row">
+            <img [src]="card.getSuit() | suitImgUrl" alt="card-suit-img">
+        </div>
+        <div id="mid-row">
+            {{ card.getNumber() }}
+        </div>
+        <div id="bottom-row">
+            <img [src]="card.getSuit() | suitImgUrl" alt="card-suit-img">
+        </div>
+    </ng-template>
+
+    <ng-template #cardsBack>
+        <div id="cardsBack"></div>
+    </ng-template>
+
+</div>

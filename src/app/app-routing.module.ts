@@ -6,14 +6,18 @@ import { SigninFormComponent } from './components/signin-form/signin-form.compon
 import { QuienSoyComponent } from './components/quien-soy/quien-soy.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ChatRoomComponent } from './pages/chat-room/chat-room.component';
+import { AhorcadoComponent } from './components/ahorcado/ahorcado.component';
+import { PreguntadosComponent } from './components/preguntados/preguntados.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/chat-room', pathMatch: 'full' },
+  { path: '', redirectTo: '/preguntados', pathMatch: 'full' },
   { path: 'login-form', component: LoginFormComponent },
   { path: 'signin-form', component: SigninFormComponent },
   { path: 'profile', component: QuienSoyComponent },
   { path: 'home', component: HomePageComponent },
-  { path: 'chat-room', component: ChatRoomComponent }
+  { path: 'chat-room', component: ChatRoomComponent },
+  { path: 'hangman', component: AhorcadoComponent },
+  { path: 'preguntados', component: PreguntadosComponent }
 ]
 
 @NgModule({

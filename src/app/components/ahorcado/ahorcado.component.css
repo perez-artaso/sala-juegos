@@ -1,0 +1,32 @@
+#hangman-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#word-and-chances {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+#word {
+    font-size: 3rem;
+}
+
+#chances {
+    font-size: 3rem;
+}
+
+#input-zone {
+    width: 40%;
+}
+
+.display-block {
+    display: block !important;
+}
+
+#reset-btn {
+    
+}

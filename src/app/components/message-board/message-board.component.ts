@@ -28,7 +28,6 @@ export class MessageBoardComponent implements OnInit {
       (messages: unknown[]) => {
 
         this.messages = messages as ChatMessage[];
-        console.dir(this.messages);
 
       }
     );

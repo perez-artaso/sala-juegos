@@ -1,0 +1,22 @@
+<div>
+
+    <key
+        *ngFor="let key of keys;"
+        [keyValue]="key"
+        (onKeyPressed)="emitKey($event)"
+    >
+    </key>
+
+    <div id="flex-line-break"></div>
+
+    
+    <key
+        style="flex-grow: 2; margin-top: 1.2vw;"
+        [keyValue]="' '"
+        [isSpaceBar]="true"
+        (onKeyPressed)="emitKey($event)"
+    >
+    </key>
+    
+
+</div>

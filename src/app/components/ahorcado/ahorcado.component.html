@@ -1,0 +1,43 @@
+<div [ngClass]="{'display-block': gameOver}" id="hangman-container">
+
+    <div id="word-and-chances">
+        <div id="word">
+            <ng-template [ngIf]="!gameOver" [ngIfElse]="showWord">
+                {{ exposedStr }}
+            </ng-template>
+            <ng-template #showWord>
+                {{ stringToGuess }}
+            </ng-template>
+        </div>
+
+        <div *ngIf="!gameOver; else gameOverBlock" id="chances">
+            Chances: {{ chances - wrongGuesses }}
+        </div>
+
+        <ng-template #gameOverBlock>
+
+            <div style="font-size: 3rem;" *ngIf="won; else loseBlock;">
+                ¡Felicidades! Ganaste con {{chances - wrongGuesses}} chances restantes.
+            </div>
+
+            <ng-template #loseBlock>
+                <div style="font-size: 3rem;">
+                    ¡Perdiste!
+                    <img src="assets/images/hanged.gif">
+                </div>
+            </ng-template>
+
+            <button class="btn btn-primary mt-3" (click)="reset()">
+                Volver A Jugar
+            </button>
+
+        </ng-template>
+
+
+    </div>
+
+    <div *ngIf="inputEnabled" id="input-zone">
+        <onscreen-keyboard (onKeyPressed)="makeGuess($event)"></onscreen-keyboard>
+    </div>
+
+</div>
