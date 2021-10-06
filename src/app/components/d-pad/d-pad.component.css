@@ -1,0 +1,34 @@
+#d-pad-container {
+    display: flex;
+    width: 20vw;
+    flex-direction: column;
+}
+
+#first-row {
+    display:flex;
+    flex-basis: 100%;
+}
+
+#second-row {
+    display:flex;
+    flex-basis: 100%;
+}
+
+#third-row {
+    display:flex;
+    flex-basis: 100%;
+}
+
+.empty-space {
+    min-width: 33%;
+}
+
+img {
+    max-width: 33%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+img:active {
+    transform: scale(.9);
+}

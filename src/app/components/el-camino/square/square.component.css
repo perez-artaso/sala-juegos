@@ -1,0 +1,34 @@
+div {
+    overflow: hidden;
+    position: relative;
+}
+
+img {
+    max-width: 100%;
+}
+
+.left-down {
+    transform: translate(-27%, 27%);
+}
+
+.left-up {
+    transform: translate(-27%, -27%);
+}
+
+.right-down {
+    transform: translate(27%, 27%);
+}
+
+.right-up {
+    transform: translate(27%, -27%);
+}
+
+#playerChip {
+    position: absolute;
+    max-width: 75%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: darkgoldenrod;
+    border-radius: 100%;
+}

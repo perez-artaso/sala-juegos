@@ -1,0 +1,28 @@
+<div id="board-container">
+    <board 
+        [rows]="7" 
+        [columns]="9" 
+        [direction]="directionObject" 
+        (onWrongMove)="wrongMove()" 
+        [lightsOn]="lightsOn"
+        (onVictory)="wonGame()"
+    ></board>
+    <div id="d-pad-container">
+        <d-pad *ngIf="!gameOver" (onInput)="moveChip($event)"></d-pad>
+        <div style="font-size: 3rem;" *ngIf="timer != 0">
+            <img style="max-width: 5vw;" src="assets/images/timer.png" alt="timer">
+            {{timer}}
+        </div>
+        <div *ngIf="!gameOver; else messageBlock" id="player-lifes">
+            <img *ngFor="let heart of lives" src="assets/images/lives.png" alt="heart-img">
+        </div>
+        <ng-template #messageBlock>
+            <div class="userMessage" [ngClass]="setMessageClasses()">
+                {{ message }}
+            </div>
+            <button (click)="newGame()" class="btn btn-primary">
+                Volver A Jugar
+            </button>
+        </ng-template>
+    </div>
+</div>

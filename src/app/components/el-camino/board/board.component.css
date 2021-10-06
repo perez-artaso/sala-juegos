@@ -1,0 +1,16 @@
+#ec-board {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    border-radius: 5px;
+    max-width: 100vh;
+}
+
+.ec-row {
+    display: flex;
+    flex-basis: 100%;
+}
+
+.ec-square {
+    max-width: 100%;
+}

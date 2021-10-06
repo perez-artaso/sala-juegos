@@ -1,0 +1,13 @@
+<div id="ec-board">
+    <div class="ec-row" *ngFor="let rows of board; let r = index;"> 
+        <square
+            class="ec-square" 
+            *ngFor="let square of rows; let c = index;" 
+            [lightsOn]="lightsOn"
+            [roadBlock]="square"
+            [coordinates]="[r, c]"
+            [playerPosition]="playerPosition"
+            >
+        </square>
+    </div>
+</div>

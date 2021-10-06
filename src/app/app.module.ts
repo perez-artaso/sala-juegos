@@ -27,6 +27,11 @@ import { CardComponent } from './components/card/card.component';
 import { SuitImgUrlPipe } from './pipes/suit-img-url.pipe';
 import { CardDeckComponent } from './components/card-deck/card-deck.component';
 import { PreguntadosComponent } from './components/preguntados/preguntados.component';
+import { ElCaminoComponent } from './components/el-camino/el-camino.component';
+import { SquareComponent } from './components/el-camino/square/square.component';
+import { BoardComponent } from './components/el-camino/board/board.component';
+import { RoadblockPipe } from './pipes/roadblock.pipe';
+import { DPadComponent } from './components/d-pad/d-pad.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +52,12 @@ import { PreguntadosComponent } from './components/preguntados/preguntados.compo
     CardComponent,
     SuitImgUrlPipe,
     CardDeckComponent,
-    PreguntadosComponent
+    PreguntadosComponent,
+    ElCaminoComponent,
+    SquareComponent,
+    BoardComponent,
+    RoadblockPipe,
+    DPadComponent
   ],
   imports: [
     BrowserModule,

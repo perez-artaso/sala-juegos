@@ -10,14 +10,14 @@ export class AllSportsApiService {
 
   domain: string;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.domain = "https://apiv2.allsportsapi.com";
   }
 
   GetPlayersFromTeamOfALeague(APIkey: string, leagueId: string): Observable<Object> {
     
     return this.http.get(
-      this.domain + '/football?' +
+      '/football?' +
       'met=Teams&' +
       'APIkey=' + APIkey +
       '&leagueId='+ leagueId

@@ -1,0 +1,8 @@
+{
+    "/football/*": {
+      "target": "https://apiv2.allsportsapi.com/",
+      "secure": true,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
