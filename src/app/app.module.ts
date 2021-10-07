@@ -34,7 +34,6 @@ import { RoadblockPipe } from './pipes/roadblock.pipe';
 import { DPadComponent } from './components/d-pad/d-pad.component';
 import { SurveyComponent } from './components/survey/survey.component';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
-import { DisplayNameFromIdPipe } from './pipes/display-name-from-id.pipe';
 
 @NgModule({
   declarations: [
@@ -62,8 +61,7 @@ import { DisplayNameFromIdPipe } from './pipes/display-name-from-id.pipe';
     RoadblockPipe,
     DPadComponent,
     SurveyComponent,
-    AccessDeniedComponent,
-    DisplayNameFromIdPipe
+    AccessDeniedComponent
   ],
   imports: [
     BrowserModule,
