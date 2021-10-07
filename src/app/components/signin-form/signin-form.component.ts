@@ -31,6 +31,10 @@ export class SigninFormComponent implements OnInit {
           Validators.email
         ])
       ],
+      displayName: [
+        '',
+        Validators.required
+      ],
       password: [
         '',
         Validators.compose([
@@ -47,7 +51,10 @@ export class SigninFormComponent implements OnInit {
         this.signinForm.get('email')?.value, 
         this.signinForm.get('password')?.value
       ).then(
-        () => {
+        (user) => {
+          this.auth.updateUser({
+            displayName: this.signinForm.get('displayName')?.value
+          });
           this.router.navigateByUrl('/home');
         }
       ).catch(

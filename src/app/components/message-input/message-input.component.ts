@@ -29,6 +29,7 @@ export class MessageInputComponent implements OnInit {
           {
             message: this.messageInput,
             userId: user?.uid,
+            displayName: user?.displayName,
             timestamp: Math.floor(new Date().getTime()/1000.0).toString()
           }
         ).then(

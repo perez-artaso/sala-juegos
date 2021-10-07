@@ -15,6 +15,18 @@
         </div>
 
         <div class="form-floating">
+            <input
+                type="text" 
+                class="form-control" 
+                id="floatingDisplayName" 
+                placeholder="Ingrese su nombre de usuario"
+                formControlName="displayName"
+                [ngClass]="{'is-invalid': isInputValid('displayName') }"
+            >
+            <label for="floatingInput">Nombre de usuario</label>
+        </div>
+
+        <div class="form-floating">
             <input 
                 type="password" 
                 class="form-control" 

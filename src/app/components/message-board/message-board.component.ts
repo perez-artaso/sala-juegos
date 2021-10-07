@@ -11,7 +11,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class MessageBoardComponent implements OnInit {
 
   messages: ChatMessage[] = [
-    new ChatMessage("", "", "")
+    new ChatMessage("", "", "", "")
   ];
 
   constructor(private firestore: FirestoreService) {
@@ -35,6 +35,24 @@ export class MessageBoardComponent implements OnInit {
 
   updateBoardPosition () {
 
+  }
+
+  getFormatedDate(timestamp: string) {
+    
+    const dateObj = new Date(Number(timestamp) * 1000);
+    const day = dateObj.getDate();
+    const month = dateObj.getMonth();
+    const year = dateObj.getFullYear();
+    const hours = dateObj.getHours();
+    const minutes = dateObj.getMinutes();
+
+    return (
+      day + "/" + 
+      (month + 1) + "/" + 
+      year + " " + 
+      hours + ":" + 
+      minutes
+    );
   }
 
 }

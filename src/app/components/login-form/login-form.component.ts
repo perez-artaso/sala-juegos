@@ -32,7 +32,6 @@ export class LoginFormComponent implements OnInit {
     this.auth.loggedUser().subscribe(
       (user) => {
         this.loggedUser = user;
-        console.dir(this.loggedUser);
       }
     );
   }

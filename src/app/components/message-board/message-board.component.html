@@ -5,8 +5,8 @@
     >
       <div class="card message-card">
           <h5 class="card-header">
-            <strong>{{ chatMessage.userId }}</strong>
-            <span class="message-time">{{ chatMessage.timestamp }}</span>
+            <strong>{{ chatMessage.displayName }}</strong>
+            <span class="message-time">{{ getFormatedDate(chatMessage.timestamp) }}</span>
           </h5>
           <div class="card-body">
               {{ chatMessage.message }}
