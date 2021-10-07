@@ -22,7 +22,7 @@ export class AuthGuardGuard implements CanActivate {
             if(user) {
               resolve(true);
             } else {
-              this.router.navigate(['access-denied'])
+              this.router.navigate(['login-form'])
             }            
           })
       })

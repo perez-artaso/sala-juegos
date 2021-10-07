@@ -33,6 +33,7 @@ export class HeaderNavbarComponent implements OnInit {
   }
 
   logout() {
+    this.router.navigate(['/login-form']);
     this.auth.logout();
   }
 

@@ -4,7 +4,7 @@
         <h1>Juego: "El Camino"</h1>
     </div>
     
-    <p class="p-4" style="font-size: 1.5rem">
+    <p class="p-4 card" style="font-size: 1.5rem">
         "El Camino" es un juego de memoria.<br>
         Al usuario se le presenta un tablero con un recorrido marcado, y
         se dispone de 5 segundos para memorizarlo. Pasado ese tiempo, una densa
@@ -13,5 +13,18 @@
         desde el inicio hasta el final sin salirse de la ruta.<br>
         Tras equivocarse tres veces, el juego se dará por perdido.<br>
         El jugador que consiga llegar hasta la salida del camino, acumulará las vidas que le quedaron, siendo 3 el puntaje máximo (partida perfecta).
+    </p>
+    <br><br>
+    <h3>Detalles</h3>
+    <p class="card p-4" style="font-size: 1.5rem">
+        
+        La creación de los escenarios se realiza de forma procedural, y el tablero
+        acepta dos inputs para setear la cantidad de filas y columnas.
+        Utilizando como único dato el tamaño de la matriz, un algoritmo
+        genera un posible camino de principio a fin, y otra rutina toma este
+        camino para generar el tablero.<br>
+        Esto implica que la dificultad del juego se puede definir a partir del tamaño
+        de la matriz. Se definió un tamaño estándar de 7x9, que es el que se presenta
+        en este caso.
     </p>
 </div>
