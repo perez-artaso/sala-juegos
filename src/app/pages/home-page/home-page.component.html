@@ -1,0 +1,9 @@
+<div id="home-container" class="container">
+    <div *ngFor="let linkCard of cards" class="card" [routerLink]="linkCard.path">
+        <img class="card-img-top" [src]="linkCard.img" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{linkCard.title}}</h5>
+          <p class="card-text">{{linkCard.description}}</p>
+        </div>
+      </div>
+</div>

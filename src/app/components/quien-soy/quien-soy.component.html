@@ -1,41 +1,17 @@
 <div class="container">
-    <form [formGroup]="profileForm" (ngSubmit)="profileFormSubmition()">
-
-        <label class="form-label" for="profile-image">Imagen de Perfil</label>
-        <input 
-            type="text"
-            class="form-control mb-3"
-            alt="profile-image"
-            id="profile-image"
-            formControlName="photoURL"
-        >
-
-        <label class="form-label" for="profile-email">Email</label>
-        <input 
-            type="text" 
-            class="form-control mb-3"
-            alt="profile-email"
-            id="profile-email"
-            formControlName="email"
-        >
-
-        <label class="form-label" for="profile-display-name">Nombre</label>
-        <input
-            #displayName
-            type="text" 
-            class="form-control" 
-            alt="profile-display-name" 
-            id="profile-display-name"
-            formControlName="displayName"
-            (focus)="onFocus(displayName)"
-        >
-
-        <button id="submit-btn" type="submit" class="btn btn-primary">Actualizar</button>
-
-    </form>
-
-    <div id="keyboard-container">
-        <onscreen-keyboard (onKeyPressed)="processIncomingKey($event)"></onscreen-keyboard>
+    <div class="card p-4">
+        <h1>Ignacio Perez Artaso</h1>
+        <h1>Juego: "El Camino"</h1>
     </div>
-
+    
+    <p class="p-4" style="font-size: 1.5rem">
+        "El Camino" es un juego de memoria.<br>
+        Al usuario se le presenta un tablero con un recorrido marcado, y
+        se dispone de 5 segundos para memorizarlo. Pasado ese tiempo, una densa
+        niebla avanzará sobre el territorio, impidiéndole al jugador ver por dónde va.<br>
+        Utilizando los botones direccionales, el desafío está en llevar nuestra ficha
+        desde el inicio hasta el final sin salirse de la ruta.<br>
+        Tras equivocarse tres veces, el juego se dará por perdido.<br>
+        El jugador que consiga llegar hasta la salida del camino, acumulará las vidas que le quedaron, siendo 3 el puntaje máximo (partida perfecta).
+    </p>
 </div>
