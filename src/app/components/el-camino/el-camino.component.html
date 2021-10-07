@@ -18,7 +18,8 @@
         </div>
         <ng-template #messageBlock>
             <div class="userMessage" [ngClass]="setMessageClasses()">
-                {{ message }}
+                {{ message }} <br>
+                Puntuación Acumulada: {{playerScore}}
             </div>
             <button (click)="newGame()" class="btn btn-primary">
                 Volver A Jugar

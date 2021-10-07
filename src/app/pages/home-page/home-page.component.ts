@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CardSuit } from 'src/app/models/card-suit';
+import { ScoreService } from 'src/app/services/score.service';
 
 @Component({
   selector: 'app-home-page',

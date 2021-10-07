@@ -32,6 +32,8 @@ import { SquareComponent } from './components/el-camino/square/square.component'
 import { BoardComponent } from './components/el-camino/board/board.component';
 import { RoadblockPipe } from './pipes/roadblock.pipe';
 import { DPadComponent } from './components/d-pad/d-pad.component';
+import { SurveyComponent } from './components/survey/survey.component';
+import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { DPadComponent } from './components/d-pad/d-pad.component';
     SquareComponent,
     BoardComponent,
     RoadblockPipe,
-    DPadComponent
+    DPadComponent,
+    SurveyComponent,
+    AccessDeniedComponent
   ],
   imports: [
     BrowserModule,

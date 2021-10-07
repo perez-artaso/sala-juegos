@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AllSportsApiPlayer, AllSportsApiResponse, AllSportsApiTeam } from 'src/app/models/all-sports-api-classes';
 import { AllSportsApiService } from 'src/app/services/all-sports-api.service';
+import { ScoreService } from 'src/app/services/score.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -11,13 +12,21 @@ import { environment } from 'src/environments/environment';
 export class PreguntadosComponent implements OnInit {
 
   gameLoaded: boolean = false;
+  playing: boolean = false;
 
   teams: Array<AllSportsApiTeam> = [];
   selectedPlayer: AllSportsApiPlayer = new AllSportsApiPlayer();
   correctAnswer?: string;
   wrongAnswers?: Array<string>;
 
-  constructor(private sportsApi: AllSportsApiService) {
+  messageForUser: string = "";
+
+  playerScore: number = 0;
+
+  gameOver: boolean = true;
+  won: boolean = false;
+
+  constructor(private sportsApi: AllSportsApiService, private scores: ScoreService) {
     
   }
 
@@ -56,12 +65,17 @@ export class PreguntadosComponent implements OnInit {
 
       this.correctAnswer = chosen_1.team_name;
 
-      if (false_1.team_name && false_2.team_name) {
-        this.wrongAnswers = [
+      if (false_1.team_name && false_2.team_name && chosen_1.team_name) {
+        this.wrongAnswers = this.shuffleAnswers([
           false_1.team_name,
-          false_2.team_name
-        ]
-      }      
+          false_2.team_name,
+          chosen_1.team_name
+        ]);
+      }
+
+      this.gameOver = false;
+      this.won = false;
+      this.playing = true;
 
     }
 
@@ -82,6 +96,46 @@ export class PreguntadosComponent implements OnInit {
       return selected;
     }
 
+  }
+
+  shuffleAnswers(answers: string[]) {
+
+    let currentIndex = answers.length,  randomIndex;
+
+    while (currentIndex != 0) {
+  
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [answers[currentIndex], answers[randomIndex]] = [
+        answers[randomIndex], answers[currentIndex]];
+    }
+  
+    return answers;
+    
+  }
+
+  evaluateAnswer (answer: string) {
+    
+    if (answer === this.correctAnswer) {
+      this.won = true;
+      this.messageForUser = "¡Golazo!";
+      this.playerScore++;
+    } else {
+      this.playerScore--;
+      this.messageForUser = "¿¡QUÉ!?";
+    }
+
+    this.scores.updateScore('preguntadosScores', this.playerScore);
+    
+    this.gameOver = true;
+
+  }
+
+  getScores() {
+    this.scores.getScore('preguntadosScores').then(
+      (score) => this.playerScore = score
+    )
   }
 
 }

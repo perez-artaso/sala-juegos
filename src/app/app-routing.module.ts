@@ -9,18 +9,24 @@ import { ChatRoomComponent } from './pages/chat-room/chat-room.component';
 import { AhorcadoComponent } from './components/ahorcado/ahorcado.component';
 import { PreguntadosComponent } from './components/preguntados/preguntados.component';
 import { ElCaminoComponent } from './components/el-camino/el-camino.component';
-import { DPadComponent } from './components/d-pad/d-pad.component';
+import { MayorOMenorComponent } from './components/mayor-o-menor/mayor-o-menor.component';
+import { SurveyComponent } from './components/survey/survey.component';
+import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/el-camino', pathMatch: 'full' },
+  { path: '', redirectTo: '/login-form', pathMatch: 'full' },
   { path: 'login-form', component: LoginFormComponent },
   { path: 'signin-form', component: SigninFormComponent },
-  { path: 'profile', component: QuienSoyComponent },
-  { path: 'home', component: HomePageComponent },
-  { path: 'chat-room', component: ChatRoomComponent },
-  { path: 'hangman', component: AhorcadoComponent },
-  { path: 'preguntados', component: PreguntadosComponent },
-  { path: 'el-camino', component: ElCaminoComponent }
+  { path: 'profile', component: QuienSoyComponent, canActivate: [AuthGuardGuard] },
+  { path: 'home', component: HomePageComponent, canActivate: [AuthGuardGuard]},
+  { path: 'chat-room', component: ChatRoomComponent, canActivate: [AuthGuardGuard] },
+  { path: 'hangman', component: AhorcadoComponent, canActivate: [AuthGuardGuard] },
+  { path: 'preguntados', component: PreguntadosComponent, canActivate: [AuthGuardGuard] },
+  { path: 'el-camino', component: ElCaminoComponent, canActivate: [AuthGuardGuard] },
+  { path: 'mayorMenor', component: MayorOMenorComponent, canActivate: [AuthGuardGuard]},
+  { path: 'survey', component: SurveyComponent, canActivate: [AuthGuardGuard] },
+  { path: 'access-denied', component: AccessDeniedComponent }
 ]
 
 @NgModule({

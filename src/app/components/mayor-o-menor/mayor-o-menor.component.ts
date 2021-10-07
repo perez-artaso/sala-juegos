@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from 'src/app/models/card';
 import { CardDeck } from 'src/app/models/card-deck';
+import { ScoreService } from 'src/app/services/score.service';
 
 @Component({
   selector: 'mayor-o-menor',
@@ -20,13 +21,13 @@ export class MayorOMenorComponent implements OnInit {
   messageForUser: string = 'Seleccioná tu opción y pedí una carta';
   wrongGuess: boolean = false;
 
-  constructor() {
+  constructor(private scores: ScoreService) {
     this.cardDeck = new CardDeck();
     this.lastCard = this.cardDeck.popRandomCard();
   }
 
   ngOnInit(): void {
-    
+    this.getScores();
   }
 
   setHigher(higherSelected: boolean) {
@@ -42,20 +43,31 @@ export class MayorOMenorComponent implements OnInit {
       this.points = this.points - 2;
       this.messageForUser = "Son iguales, mala suerte! Pierde dos puntos.";
       this.wrongGuess = true;
+      this.scores.updateScore('mayorMenorScores', this.points);
     } else {
       if (this.higherSelected == (this.lastCard.getNumber() < this.currentCard.getNumber())) {
-        this.points++;
-        this.messageForUser = "Excelente! Suma un punto.";
-        this.wrongGuess = false;
+        this.victory();
       } else {
-        this.points--;
-        this.messageForUser = "Mala Suerte! Pierde un punto.";
-        this.wrongGuess = true;
+        this.defeat();
       }
     }
 
     this.revealCurrentCard = true;
 
+  }
+
+  victory() {
+    this.points++;
+    this.messageForUser = "Excelente! Suma un punto.";
+    this.wrongGuess = false;
+    this.scores.updateScore('mayorMenorScores', this.points);
+  }
+
+  defeat() {
+    this.points--;
+    this.messageForUser = "Mala Suerte! Pierde un punto.";
+    this.wrongGuess = true;
+    this.scores.updateScore('mayorMenorScores', this.points);
   }
 
   newTurn () {
@@ -65,6 +77,12 @@ export class MayorOMenorComponent implements OnInit {
     this.revealCurrentCard = false;
     this.messageForUser = 'Seleccioná tu opción y pedí una carta.';
     
+  }
+
+  getScores() {
+    this.scores.getScore('mayorMenorScores').then(
+      (score) => this.points = score
+    )
   }
 
 }

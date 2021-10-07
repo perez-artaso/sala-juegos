@@ -1,10 +1,44 @@
-<div id="playerInfo">
-    <h1>{{ selectedPlayer.player_name }}</h1>
-    <img [src]="selectedPlayer.player_image" alt="">
+<div id="preguntados-container">
+
+    <ng-template [ngIf]="!playing" [ngIfElse]="gameBlock">
+        <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">            
+            <strong><h3>Instrucciones</h3></strong>
+            <p>
+                Respondé en qué club de la liga argentina juega el jugador y sumá puntos. Pero atento: perder los resta, y volver de una mala racha se hace difícil. <strong>Como en el fútbol.</strong>
+            </p>
+        
+            <button id="play-btn" class="btn btn-primary" *ngIf="gameLoaded; else loadingBlock" (click)="setQuestion()">Jugar !</button>
+            <ng-template #loadingBlock>
+                <img id="loading-gif" src="assets/images/loading-43.gif" alt="loading">
+                <h2>CARGANDO...</h2>
+            </ng-template>
+        </div>
+    </ng-template>
+
+    <ng-template #gameBlock>
+        <div id="question-pannel">
+            
+            <img *ngIf="selectedPlayer.player_image" [src]="selectedPlayer.player_image" alt="player_img">
+            <h1>{{selectedPlayer.player_name}}</h1>
+
+            <p [ngClass]="{'alert alert-danger': !won, 'alert alert-success': won}" *ngIf="gameOver" id="messageForUser">
+                {{ messageForUser }} <br>
+                Puntaje Histórico: {{playerScore}}
+                <button class="btn btn-primary" (click)="setQuestion()">Otro Jugador</button>
+            </p>
+
+    
+            <div id="posible-answers">
+                <p 
+                    class="answer" 
+                    *ngFor="let wrongAnswer of wrongAnswers" 
+                    (click)="evaluateAnswer(wrongAnswer)"
+                    [ngClass]="{'alert alert-danger wrong': (wrongAnswer != correctAnswer) && gameOver, 'alert alert-success right': (wrongAnswer == correctAnswer) && gameOver}"
+                >
+                    {{ wrongAnswer }}
+                </p>
+            </div>
+        </div>
+    </ng-template>
+
 </div>
-
-
-<h2>{{ correctAnswer }}</h2>
-<p *ngFor="let wrongAnswer of wrongAnswers">{{ wrongAnswer }}</p>
-
-<button *ngIf="gameLoaded" (click)="setQuestion()">Jugar !</button>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ScoreService } from 'src/app/services/score.service';
 
 @Component({
   selector: 'el-camino',
@@ -19,12 +20,15 @@ export class ElCaminoComponent implements OnInit {
   gameOver: boolean = true;
   won: boolean = false;
 
-  constructor() { 
+  playerScore: number = 0;
+
+  constructor(private scores: ScoreService) { 
     this.message = "¡ Recordá el camino !";
   }
 
   ngOnInit(): void {
     this.setTimer();
+    this.getScores();
   }
 
   moveChip(direction: string) {
@@ -78,6 +82,17 @@ export class ElCaminoComponent implements OnInit {
     this.gameOver = true;
     this.lightsOn = true;
     this.message = "¡Felicidades! ¡ GANASTE !";
+    this.playerScore = this.playerScore + this.lives.length;
+    this.scores.updateScore(
+      'elCaminoScores',
+      this.playerScore
+    )
+  }
+
+  getScores() {
+    this.scores.getScore('elCaminoScores').then(
+      (score) => this.playerScore = score
+    )
   }
 
 }

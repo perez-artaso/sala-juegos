@@ -1,5 +1,7 @@
 <div [ngClass]="{'display-block': gameOver}" id="hangman-container">
 
+    <h5>Puntuación: {{playerScore}}</h5>
+
     <div id="word-and-chances">
         <div id="word">
             <ng-template [ngIf]="!gameOver" [ngIfElse]="showWord">
